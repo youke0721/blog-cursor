@@ -1,0 +1,21 @@
+<div class="posts">
+  <% posts.forEach(post => { %>
+    <div class="post">
+      <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+      <div class="meta">
+        作者: <%= post.username %> | 
+        发布时间: <%= moment(post.created_at).format('YYYY-MM-DD HH:mm:ss') %>
+      </div>
+    </div>
+  <% }); %>
+
+  <div class="pagination">
+    <% if (currentPage > 1) { %>
+      <a href="/posts?page=<%= currentPage - 1 %>">上一页</a>
+    <% } %>
+    <span>第 <%= currentPage %> 页，共 <%= totalPages %> 页</span>
+    <% if (currentPage < totalPages) { %>
+      <a href="/posts?page=<%= currentPage + 1 %>">下一页</a>
+    <% } %>
+  </div>
+</div> 

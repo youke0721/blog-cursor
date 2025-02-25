@@ -1,0 +1,18 @@
+<div class="post-detail">
+  <h1><%= post.title %></h1>
+  <div class="meta">
+    作者: <%= post.username %> | 
+    发布时间: <%= moment(post.created_at).format('YYYY-MM-DD HH:mm:ss') %>
+  </div>
+  <div class="content">
+    <%= post.content %>
+  </div>
+  <% if (locals.user && user.id === post.user_id) { %>
+    <div class="actions">
+      <a href="/posts/<%= post.id %>/edit" class="btn">编辑</a>
+      <form method="POST" action="/posts/<%= post.id %>/delete" style="display: inline;">
+        <button type="submit" class="btn" onclick="return confirm('确定要删除吗？')">删除</button>
+      </form>
+    </div>
+  <% } %>
+</div> 

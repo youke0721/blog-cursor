@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>博客系统</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="brand">博客系统</a>
+      <div class="nav-links">
+        <% if (locals.user) { %>
+          <span>欢迎, <%= user.username %></span>
+          <a href="/posts/create">写文章</a>
+          <a href="/logout">注销</a>
+        <% } else { %>
+          <a href="/login">登录</a>
+          <a href="/register">注册</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <%- body %>
+  </main>
+  <script src="/js/main.js"></script>
+</body>
+</html> 
